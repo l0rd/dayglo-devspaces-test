@@ -36,6 +36,6 @@ commands:
       label: "Run Jupyter"
       component: anaconda
       # workingDir: ${PROJECTS_ROOT}/python-hello-world
-      commandLine: /bin/bash -c "    conda install jupyter -y --quiet &&     mkdir -p /opt/notebooks &&     jupyter notebook     --notebook-dir=/opt/notebooks --ip='*' --port=8888     --no-browser --allow-root"
+      # commandLine: /bin/bash -c "    conda install jupyter -y --quiet &&     mkdir -p /opt/notebooks &&     jupyter notebook     --notebook-dir=/opt/notebooks --ip='*' --port=8888     --no-browser --allow-root"
       group:
         kind: run
