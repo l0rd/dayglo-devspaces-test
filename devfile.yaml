@@ -13,12 +13,29 @@ components:
   - name: venv
     volume:
       size: 1G
+  - name: anaconda
+    container:
+      image: continuumio/anaconda3:2022.10
+      endpoints:
+      - name: jupyter-from-anaconda
+        targetPort: 8888
+        protocol: https
+        secure: 'true'
+        exposure: public
+      # volumeMounts:
+      #   - name: opt_conda
+      #     path: /opt/conda
+      memoryLimit: 2G
+      mountSources: true
+  # - name: opt_conda
+  #   volume:
+  #     size: 10G
 commands:
   - id: run
     exec:
-      label: "Run the application"
-      component: python
-      workingDir: ${PROJECTS_ROOT}/python-hello-world
-      commandLine: python -m venv .venv && . .venv/bin/activate && python hello-world.py
+      label: "Run Jupyter"
+      component: anaconda
+      # workingDir: ${PROJECTS_ROOT}/python-hello-world
+      commandLine: /bin/bash -c "conda install jupyter -y --quiet && mkdir -p /opt/notebooks && jupyter notebook --notebook-dir=/opt/notebooks --ip='*' --port=8888 --no-browser --allow-root"
       group:
         kind: run
