@@ -20,7 +20,7 @@ components:
       - name: jupyter-from-anaconda
         targetPort: 8888
         protocol: https
-        secure: 'true'
+        secure: true
         exposure: public
       # volumeMounts:
       #   - name: opt_conda
