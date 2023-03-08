@@ -13,23 +13,30 @@ components:
   - name: venv
     volume:
       size: 1G
-  - name: anaconda
+#   - name: anaconda
+#     container:
+#       image: ddap-example-jupyter-image:latest
+#       endpoints:
+#       - name: jupyter-from-anaconda
+#         targetPort: 8888
+#         protocol: https
+#         secure: true
+#         exposure: public
+#       # volumeMounts:
+#       #   - name: opt_conda
+#       #     path: /opt/conda
+#       memoryLimit: 2G
+#       mountSources: true
+  - name: httpd
     container:
-      image: ddap-example-jupyter-image:latest
+      image: httpd
       endpoints:
-      - name: jupyter-from-anaconda
-        targetPort: 8888
+      - name: httpd
+        targetPort: 80
         protocol: https
         secure: true
         exposure: public
-      # volumeMounts:
-      #   - name: opt_conda
-      #     path: /opt/conda
       memoryLimit: 2G
-      mountSources: true
-  # - name: opt_conda
-  #   volume:
-  #     size: 10G
 commands:
   - id: run
     exec:
