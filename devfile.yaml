@@ -15,7 +15,7 @@ components:
       size: 1G
   - name: anaconda
     container:
-      image: continuumio/anaconda3:2022.10
+      image: ddap-example-jupyter-image:latest
       endpoints:
       - name: jupyter-from-anaconda
         targetPort: 8888
@@ -35,8 +35,5 @@ commands:
     exec:
       label: "Run Jupyter"
       component: anaconda
-      # workingDir: ${PROJECTS_ROOT}/python-hello-world
-      # commandLine: /bin/bash -c "    conda install jupyter -y --quiet &&     mkdir -p /opt/notebooks &&     jupyter notebook     --notebook-dir=/opt/notebooks --ip='*' --port=8888     --no-browser --allow-root"
-      commandLine: sleep 99999
       group:
         kind: run
