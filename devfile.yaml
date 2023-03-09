@@ -15,7 +15,7 @@ components:
       size: 1G
   - name: conda
     container:
-      image: dso-quay-registry-quay-quay-enterprise.apps.ocp1.azure.dso.digital.mod.uk/george_cairns/gcconda
+      image: dso-quay-registry-quay-quay-enterprise.apps.ocp1.azure.dso.digital.mod.uk/george_cairns/gcconda2
       endpoints:
       - name: conda
         targetPort: 8888
