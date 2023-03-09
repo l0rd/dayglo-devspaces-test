@@ -15,7 +15,7 @@ components:
       size: 1G
   - name: httpd
     container:
-      image: ddap-gchttpd:latest
+      image: dd-digitalfoundry-ddap/ddap-gchttpd:latest
       endpoints:
       - name: httpd
         targetPort: 8080
