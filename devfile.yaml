@@ -18,7 +18,7 @@ components:
       image: ddap-gchttpd:latest
       endpoints:
       - name: httpd
-        targetPort: 80
+        targetPort: 8080
         protocol: https
         secure: true
         exposure: public
