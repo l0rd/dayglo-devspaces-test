@@ -15,7 +15,7 @@ components:
       size: 1G
   - name: httpd
     container:
-      image: httpd
+      image: ddap-gchttpd:latest
       endpoints:
       - name: httpd
         targetPort: 80
