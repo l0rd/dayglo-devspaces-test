@@ -1,4 +1,4 @@
-FROM continuumio/anaconda3
+FROM continuumio/miniconda3
 RUN conda install jupyter -y --quiet
 RUN mkdir -p /opt/notebooks
 
