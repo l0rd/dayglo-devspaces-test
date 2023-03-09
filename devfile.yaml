@@ -15,7 +15,7 @@ components:
       size: 1G
   - name: httpd
     container:
-      image: image-registry.openshift-image-registry.svc:5000/dd-digitalfoundry-ddap/ddap-gchttpd
+      image: dso-quay-registry-quay-quay-enterprise.apps.ocp1.azure.dso.digital.mod.uk/george_cairns/gchttpd
       endpoints:
       - name: httpd
         targetPort: 8080
