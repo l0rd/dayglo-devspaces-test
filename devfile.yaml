@@ -15,7 +15,7 @@ components:
       size: 1G
   - name: httpd
     container:
-      image: dd-digitalfoundry-ddap/ddap-gchttpd:latest
+      image: image-registry.openshift-image-registry.svc:5000/dd-digitalfoundry-ddap/ddap-gchttpd
       endpoints:
       - name: httpd
         targetPort: 8080
