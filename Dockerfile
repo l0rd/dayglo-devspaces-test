@@ -1,4 +1,7 @@
 FROM continuumio/miniconda3
+
+RUN conda remove certifi
+RUN conda install certifi
 RUN conda install jupyter -y --quiet
 RUN mkdir -p /opt/notebooks
 
