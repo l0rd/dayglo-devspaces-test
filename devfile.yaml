@@ -13,12 +13,12 @@ components:
   - name: venv
     volume:
       size: 1G
-  - name: httpd
+  - name: conda
     container:
-      image: dso-quay-registry-quay-quay-enterprise.apps.ocp1.azure.dso.digital.mod.uk/george_cairns/gchttpd
+      image: dso-quay-registry-quay-quay-enterprise.apps.ocp1.azure.dso.digital.mod.uk/george_cairns/gcconda
       endpoints:
-      - name: httpd
-        targetPort: 8080
+      - name: conda
+        targetPort: 8888
         protocol: https
         secure: true
         exposure: public
