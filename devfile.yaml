@@ -13,12 +13,12 @@ components:
   - name: venv
     volume:
       size: 1G
-  - name: httpd
+  - name: conda
     container:
-      image: httpd
+      image: jupyter/scipy-notebook:2023-02-28
       endpoints:
-      - name: httpd
-        targetPort: 80
+      - name: conda
+        targetPort: 8888
         protocol: https
         secure: true
         exposure: public
