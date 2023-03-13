@@ -1,3 +1,16 @@
-FROM continuumio/anaconda3
+FROM jupyter/scipy-notebook:2023-02-28
+
+USER root
 
 RUN conda install -c conda-forge jupyterlab
+
+RUN chgrp -R root /home/$NB_USER \
+    && find /home/$NB_USER -type d -exec chmod g+rwx,o+rx {} \; \
+    && find /home/$NB_USER -type f -exec chmod g+rw {} \; \
+    && chgrp -R root /opt/conda \
+    && find /opt/conda -type d -exec chmod g+rwx,o+rx {} \; \
+    && find /opt/conda -type f -exec chmod g+rw {} \;
+
+ENV HOME /home/$NB_USER
+
+USER 1000
