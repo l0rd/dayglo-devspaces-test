@@ -15,9 +15,9 @@ components:
       size: 1G
   - name: conda
     container:
-      image: jupyter/scipy-notebook:2023-02-28
+      image: dso-quay-registry-quay-quay-enterprise.apps.ocp1.azure.dso.digital.mod.uk/george_cairns/dayglo-jupyterlab:latest
       endpoints:
-      - name: conda
+      - name: jupyterlab
         targetPort: 8888
         protocol: https
         secure: true
