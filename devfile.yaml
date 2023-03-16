@@ -9,7 +9,7 @@ components:
         - name: venv
           path: /home/user/.venv
         - name: home
-          path: /home/joyvan/work
+          path: /home/jovyan/work
       memoryLimit: 2G
       mountSources: true
   - name: venv
@@ -23,7 +23,7 @@ components:
       image: dso-quay-registry-quay-quay-enterprise.apps.ocp1.azure.dso.digital.mod.uk/george_cairns/dayglo-jupyterlab
       volumeMounts:
         - name: home
-          path: /home/joyvan/work
+          path: /home/jovyan/work
       endpoints:
       - name: jupyterlab
         targetPort: 8888
