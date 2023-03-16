@@ -22,6 +22,9 @@ components:
     container:
       image: dso-quay-registry-quay-quay-enterprise.apps.ocp1.azure.dso.digital.mod.uk/george_cairns/dayglo-jupyterlab
       mountSources: true
+      env:
+        name: NOTEBOOK_ARGS
+        value: start-notebook.sh --notebook-dir=/projects/devspaces-test # --NotebookApp.token='blahdeblah'
       volumeMounts:
         - name: home
           path: /home/jovyan/work
