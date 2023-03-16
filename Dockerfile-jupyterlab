@@ -11,6 +11,11 @@ RUN chgrp -R root /home/$NB_USER \
     && find /opt/conda -type d -exec chmod g+rwx,o+rx {} \; \
     && find /opt/conda -type f -exec chmod g+rw {} \;
 
+RUN mkdir -p /projects  \
+    && chgrp -R root /projects \
+    && find /projects -type d -exec chmod g+rwx,o+rx {} \; \
+    && find /projects -type f -exec chmod g+rw {} \;
+
 ENV HOME /home/$NB_USER
 
 USER 1000
