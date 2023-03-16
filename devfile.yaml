@@ -24,7 +24,7 @@ components:
       mountSources: true
       env:
         - name: NOTEBOOK_ARGS
-          value: start-notebook.sh --notebook-dir=/projects/devspaces-test # --NotebookApp.token='blahdeblah'
+          value: --notebook-dir=/projects/devspaces-test # --NotebookApp.token='blahdeblah'
       volumeMounts:
         - name: home
           path: /home/jovyan/work
