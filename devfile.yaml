@@ -8,14 +8,22 @@ components:
       volumeMounts:
         - name: venv
           path: /home/user/.venv
+        - name: home
+          path: /home/joyvan/work
       memoryLimit: 2G
       mountSources: true
   - name: venv
     volume:
       size: 1G
+  - name: home
+    volume:
+      size: 512Mi
   - name: conda
     container:
       image: dso-quay-registry-quay-quay-enterprise.apps.ocp1.azure.dso.digital.mod.uk/george_cairns/dayglo-jupyterlab
+      volumeMounts:
+        - name: home
+          path: /home/joyvan/work
       endpoints:
       - name: jupyterlab
         targetPort: 8888
