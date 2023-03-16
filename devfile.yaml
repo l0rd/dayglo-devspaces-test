@@ -21,6 +21,7 @@ components:
   - name: conda
     container:
       image: dso-quay-registry-quay-quay-enterprise.apps.ocp1.azure.dso.digital.mod.uk/george_cairns/dayglo-jupyterlab
+      mountSources: true
       volumeMounts:
         - name: home
           path: /home/jovyan/work
