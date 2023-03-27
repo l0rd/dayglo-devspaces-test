@@ -24,7 +24,7 @@ components:
       mountSources: true
       env:
         - name: NOTEBOOK_ARGS
-          value: --notebook-dir=/projects/devspaces-test # --NotebookApp.token='blahdeblah'
+          value: --notebook-dir=/projects/devspaces-test --NotebookApp.token=`cat /home/jovyan/ddap_jupytertoken`
       volumeMounts:
         - name: home
           path: /home/jovyan/work
@@ -36,3 +36,12 @@ components:
         exposure: public
         path: /thisisatest
       memoryLimit: 2G
+commands:
+  - id: generateToken
+    exec:
+      commandLine: "openssl rand -hex 32 > /home/jovyan/ddap_jupytertoken"
+      component: conda
+      workingDir: /
+events:
+  preStart:
+    - "generateToken"
