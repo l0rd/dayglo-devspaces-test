@@ -37,7 +37,7 @@ components:
         path: /thisisatest
       memoryLimit: 2G
 commands:
-  - id: generate-token
+  - id: get-token
     exec:
       commandLine: "jupyter server list > /projects/devspaces-test/jupyter-token.txt"
       component: conda
