@@ -37,19 +37,10 @@ components:
         path: /thisisatest
       memoryLimit: 2G
 commands:
-  - id: deploy
-    composite:
-      commands:
-        - generate-token
-        - conda
-      group:
-        kind: run
-        isDefault: true
   - id: generate-token
     exec:
-      commandLine: "openssl rand -hex 32 > /home/jovyan/ddap_jupytertoken"
+      commandLine: "jupyter server list > /projects/devspaces-test/jupyter-token.txt"
       component: conda
-      workingDir: /
 events:
-  preStart:
-    - "deploy"
+  postStart:
+    - "get-token"
