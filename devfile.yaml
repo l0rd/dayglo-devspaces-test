@@ -37,6 +37,14 @@ components:
         path: /thisisatest
       memoryLimit: 2G
 commands:
+  - id: deploy
+    composite:
+      commands:
+        - generate-token
+        - conda
+      group:
+        kind: deploy
+        isDefault: true
   - id: generate-token
     exec:
       commandLine: "openssl rand -hex 32 > /home/jovyan/ddap_jupytertoken"
@@ -44,4 +52,4 @@ commands:
       workingDir: /
 events:
   preStart:
-    - "generate-token"
+    - "deploy"
