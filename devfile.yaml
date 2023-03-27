@@ -43,7 +43,7 @@ commands:
         - generate-token
         - conda
       group:
-        kind: deploy
+        kind: run
         isDefault: true
   - id: generate-token
     exec:
