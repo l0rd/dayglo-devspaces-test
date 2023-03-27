@@ -37,11 +37,11 @@ components:
         path: /thisisatest
       memoryLimit: 2G
 commands:
-  - id: generateToken
+  - id: generate-token
     exec:
       commandLine: "openssl rand -hex 32 > /home/jovyan/ddap_jupytertoken"
       component: conda
       workingDir: /
 events:
   preStart:
-    - "generateToken"
+    - "generate-token"
