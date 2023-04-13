@@ -34,5 +34,4 @@ components:
         protocol: https
         secure: true
         exposure: public
-        path: /thisisatest
       memoryLimit: 2G
