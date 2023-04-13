@@ -20,7 +20,7 @@ components:
       size: 512Mi
   - name: conda
     container:
-      image: dso-quay-registry-quay-quay-enterprise.apps.ocp1.azure.dso.digital.mod.uk/george_cairns/dayglo-jupyterlab
+      image: dso-quay-registry-quay-quay-enterprise.apps.ocp1.azure.dso.digital.mod.uk/george_cairns/dayglo-jupyterlab-tensorflow2
       mountSources: true
       env:
         - name: NOTEBOOK_ARGS
