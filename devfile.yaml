@@ -30,6 +30,8 @@ components:
           path: /home/jovyan/work
       endpoints:
       - name: jupyterlab
+        attributes:
+          urlRewriteSupported: false
         targetPort: 8888
         protocol: https
         secure: true
