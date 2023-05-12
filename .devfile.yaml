@@ -1,17 +1,7 @@
-schemaVersion: 2.1.0
+schemaVersion: 2.2.0
 metadata:
   name: python-hello-world
 components:
-  - name: python
-    container:
-      image: registry.redhat.io/devspaces/code-rhel8:latest
-      volumeMounts:
-        - name: venv
-          path: /home/user/.venv
-        - name: home
-          path: /home/jovyan/work
-      memoryLimit: 2G
-      mountSources: true
   - name: venv
     volume:
       size: 1G
@@ -20,7 +10,7 @@ components:
       size: 512Mi
   - name: conda
     container:
-      image: dso-quay-registry-quay-quay-enterprise.apps.ocp1.azure.dso.digital.mod.uk/george_cairns/dayglo-jupyterlab
+      image: quay.io/mloriedo/cloud-dev-images:jupyterlab
       mountSources: true
       env:
         - name: NOTEBOOK_ARGS
@@ -28,6 +18,8 @@ components:
       volumeMounts:
         - name: home
           path: /home/jovyan/work
+        - name: venv
+          path: /home/jovyan/.venv
       endpoints:
       - name: jupyterlab
         attributes:
@@ -37,3 +29,12 @@ components:
         secure: true
         exposure: public
       memoryLimit: 2G
+commands:
+  - id: start-notebook
+    exec:
+      label: Start Notebook
+      commandLine: nohup start-notebook.sh &
+      component: conda
+events:
+    postStart:
+      - start-notebook

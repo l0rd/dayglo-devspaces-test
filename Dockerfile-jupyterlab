@@ -4,18 +4,26 @@ USER root
 
 RUN conda install -c conda-forge jupyterlab
 
-RUN chgrp -R root /home/$NB_USER \
-    && find /home/$NB_USER -type d -exec chmod g+rwx,o+rx {} \; \
-    && find /home/$NB_USER -type f -exec chmod g+rw {} \; \
-    && chgrp -R root /opt/conda \
-    && find /opt/conda -type d -exec chmod g+rwx,o+rx {} \; \
-    && find /opt/conda -type f -exec chmod g+rw {} \;
+RUN chgrp -R root /home/ \
+    && chgrp -R root /opt/conda
 
-RUN mkdir -p /projects  \
-    && chgrp -R root /projects \
-    && find /projects -type d -exec chmod g+rwx,o+rx {} \; \
-    && find /projects -type f -exec chmod g+rw {} \;
+# Install curl and ca_certificates (required to install nodejs)
+RUN apt-get update --yes && \
+    apt-get install --yes --no-install-recommends \
+    ca-certificates \
+    curl && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
-ENV HOME /home/$NB_USER
+# The install of nodejs 16 + the export of VSCODE_NODEJS_RUNTIME_DIR
+# environment variable are required on base images that have openssl v3 or higher.
+# This is a temporary workaround for https://github.com/eclipse/che/issues/21778
+# See also https://github.com/che-incubator/che-code/pull/120
+RUN \
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash && \
+export NVM_DIR="$HOME/.nvm" && \
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && \
+nvm install 16.20.0
+
+ENV VSCODE_NODEJS_RUNTIME_DIR="$HOME/.nvm/versions/node/v16.20.0/bin/"
 
 USER 1000
